@@ -1,0 +1,9 @@
+运行get_timestep.py文件，将会清洗得到每个线路上每个公交车相邻两个站的时间间隔
+
+运行speed.py文件，将处理得到每个线路的每个公交车的一个小时内（每10秒一个）的速度记录，缺失值以-1填充
+
+运行to_be_predict.py文件，将所需要预测的线路换成符合LGB训练的模式，
+主要内容就是根据(pred_start_stop_ID,pred_end_stop_ID)，换成多个(O_START,O_END)形式的数据，以便用于LGB
+
+运行LGB_predict.py，首先对speed进行处理，得到speed的平均数、求和偏差等数据，
+再将处理得到的时间间隔数据，以及速度记录数据拼接在一起，送到LGB进行预测
